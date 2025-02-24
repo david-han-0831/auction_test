@@ -2,7 +2,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Sword, Shield, Crosshair, Wand2, Heart } from "lucide-react"
 import Image from "next/image"
 
-const teams = [
+// Position 타입 정의
+type Position = 'TOP' | 'JUG' | 'MID' | 'ADC' | 'SUP';
+
+type Player = {
+  name: string;
+  position: Position;
+  points: number;
+}
+
+type Team = {
+  name: string;
+  players: Player[];
+}
+
+const teams: Team[] = [
   {
     name: "바밥바팀",
     players: [
@@ -25,7 +39,7 @@ const teams = [
   },
 ]
 
-const positionIcons = {
+const positionIcons: Record<Position, JSX.Element> = {
   TOP: <Sword className="w-5 h-5" />,
   JUG: <Shield className="w-5 h-5" />,
   MID: <Crosshair className="w-5 h-5" />,
